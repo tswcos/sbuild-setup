@@ -1,0 +1,6 @@
+repo/db/
+repo/dists/
+repo/lists/
+repo/logs/
+repo/pool/
+sbuild-status

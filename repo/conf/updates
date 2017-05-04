@@ -1,0 +1,8 @@
+Name: sid-upstream
+Method: http://debian.xtdv.net/debian
+Suite: sid
+Components: main
+VerifyRelease: blindtrust
+Architectures: source
+FilterSrcList: deinstall filters/pkglist
+
