@@ -11,9 +11,10 @@ for pkg in `cat pkglist | cut -d' ' -f1`; do
 
 	rm -rf *.build *.buildinfo *.udeb *.deb *.changes
 	sbuild -j 16 --host=armhf -d unstable-amd64-sbuild $pkg_*.dsc
+
 	buildlog=${pkg}_${ver}_armhf.build
 	output="$pkg $ver $(grep "^Status:" $buildlog | cut -d' ' -f2) $(grep "Finished at" $buildlog|tail -1|sed -e "s/Finished at //")"
-	echo $output >> sbuild-status
 
 	cd -
+	echo $output >> sbuild-status
 done
