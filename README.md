@@ -1,6 +1,15 @@
 ## Setup sbuild
+On Debian Jessie, sbuild need be installed from jessie-backports
+because current sbuild of jessie does not work with gnupg2 of unstable
+(Bug [#827315](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=827315))
 ```sh
-$ sudo apt-get install sbuild
+$ echo "deb http://ftp.debian.org/debian jessie-backports main" | sudo tee -a /etc/apt/sources.list
+$ sudo apt-get update
+$ sudo apt-get -t jessie-backports install sbuild
+```
+
+
+```sh
 $ sudo mkdir /root/.gnupg # To work around #792100; not needed post-Jessie
 $ sudo sbuild-update --keygen # Not needed since sbuild 0.67.0 (postJessie, see #801798)
 $ sudo sbuild-adduser $LOGNAME
@@ -9,7 +18,7 @@ $ sudo sbuild-adduser $LOGNAME
 
 Create sbuild chroot
 ```sh
-$ sudo sbuild-createchroot unstable ./chroot-sbuild http://debian.xtdv.net/debian
+$ sudo sbuild-createchroot unstable ./chroot-sbuild http://ftp.debian.org/debian
 ```
 You should change the URL to your Debian fastest mirror.
 
