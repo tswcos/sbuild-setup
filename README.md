@@ -18,7 +18,7 @@ $ sudo sbuild-adduser $LOGNAME
 
 Create sbuild chroot
 ```sh
-$ sudo sbuild-createchroot unstable ./chroot-sbuild http://ftp.debian.org/debian
+$ sudo sbuild-createchroot --include=debhelper unstable ./chroot-sbuild http://ftp.debian.org/debian
 ```
 You should change the URL to your Debian fastest mirror.
 
