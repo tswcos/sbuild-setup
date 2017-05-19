@@ -50,7 +50,7 @@ Packages, which we want to fetch, are listed in [repo/conf/filters/pkglist](./re
 
 ## Run
 Set cron job to fetch source code and run sbuild weekly.
-[sbuild-loop.sh](./sbuild-loop.sh) will cross compile all packages in *pkglist*
+[sbuild-loop.sh](./sbuild-loop.sh) only builds newest packages (base on *repo/logs/logfile*)
 ```sh
 $ crontab -e
 0 0 * * 6 cd <this dir> && reprepro -b ./repo update sid-cross
