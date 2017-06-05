@@ -1,5 +1,5 @@
 Name: sid-upstream
-Method: http://debian.xtdv.net/debian
+Method: http://ftp.debian.org/debian
 Suite: sid
 Components: main
 VerifyRelease: blindtrust
