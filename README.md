@@ -1,7 +1,7 @@
 # Setup sbuild
 ### Install sbuild
 On Debian Jessie, sbuild need be installed from jessie-backports
-because current sbuild of jessie does not work with gnupg2 of unstable
+because current sbuild of jessie does not work with gnupg2 of Buster
 (Bug [#827315](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=827315))
 ```sh
 $ echo "deb http://ftp.debian.org/debian jessie-backports main" | sudo tee -a /etc/apt/sources.list
@@ -19,7 +19,8 @@ $ sudo sbuild-adduser $LOGNAME
 
 ### Create sbuild chroot
 ```sh
-$ sudo sbuild-createchroot --include=debhelper unstable ./chroot-sbuild http://ftp.debian.org/debian
+$ test -f /usr/share/debootstrap/scripts/buster || sudo ln -s sid /usr/share/debootstrap/scripts/buster
+$ sudo sbuild-createchroot --include=debhelper buster ./chroot-sbuild http://ftp.debian.org/debian
 ```
 You should change the URL to your Debian fastest mirror.
 
@@ -28,8 +29,8 @@ Check name of chroot which has just been created,
 then you can use it to run cross-build:
 ```sh
 $ schroot -l | grep sbuild
-chroot:unstable-amd64-sbuild
-$ sbuild --host=armhf -d unstable-amd64-sbuild <package>.dsc
+chroot:buster-amd64-sbuild
+$ sbuild --host=armhf -d buster-amd64-sbuild <package>.dsc
 ```
 Update command sbuild in [sbuild-loop.sh](./sbuild-loop.sh) with your chroot.
 # Setup reprepro
@@ -42,10 +43,10 @@ You should change the URL in *./repo/conf/updates* to your Debian fastest mirror
 It will save time on fetching.
 
 In [repo/conf/distributions](./repo/conf/distributions),
-local repo is defined with codename *sid-cross*.
+local repo is defined with codename *buster-cross*.
 You can update source for local repo with command:
 ```sh
-$ reprepro -b ./repo update sid-cross
+$ reprepro -b ./repo update buster-cross
 ```
 
 Packages, which we want to fetch, are listed in [repo/conf/filters/pkglist](./repo/conf/filters/pkglist)
@@ -55,7 +56,7 @@ Set cron job to fetch source code and run sbuild weekly.
 [sbuild-loop.sh](./sbuild-loop.sh) only builds newest packages (base on *repo/logs/logfile*)
 ```sh
 $ crontab -e
-0 0 * * 6 cd <this dir> && reprepro -b ./repo update sid-cross
+0 0 * * 6 cd <this dir> && reprepro -b ./repo update buster-cross
 0 2 * * 6 cd <this dir> && ./sbuild-loop.sh
 ```
 

@@ -1,6 +1,6 @@
-Name: sid-upstream
+Name: buster-upstream
 Method: http://ftp.debian.org/debian
-Suite: sid
+Suite: buster
 Components: main
 VerifyRelease: blindtrust
 Architectures: source

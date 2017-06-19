@@ -23,7 +23,7 @@ for pkg in $last_update_pkgs; do
 	fi
 
 	rm -rf *.build *.buildinfo *.udeb *.deb *.changes
-	sbuild --jobs=16 ${profile_option} --host=armhf -d unstable-amd64-sbuild $pkg_*.dsc
+	sbuild --jobs=16 ${profile_option} --host=armhf -d buster-amd64-sbuild $pkg_*.dsc
 
 	buildlog=${pkg}_${ver}_armhf.build
 	output="$pkg $ver $(grep "^Status:" $buildlog | cut -d' ' -f2) $(grep "Finished at" $buildlog|tail -1|sed -e "s/Finished at //")"

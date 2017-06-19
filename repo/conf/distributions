@@ -1,11 +1,11 @@
-Codename: sid-cross
-Label: Debian Unstable source packages
+Codename: buster-cross
+Label: Debian Buster source packages
 Version: 10.00
 Architectures: source
 Components: main contrib non-free
-Description: Local Sid repo for cross-build
+Description: Local Buster repo for cross-build
 DebIndices: Packages Release . .gz .bz2 .xz
 DscIndices: Sources Release .gz .bz2 .xz
 Tracking: all includechanges
-Update: sid-upstream
+Update: buster-upstream
 Log: logfile
