@@ -1,6 +1,6 @@
 # Setup sbuild
 ### Install sbuild
-On Debian Jessie, sbuild need be installed from jessie-backports
+On Debian Jessie, sbuild needs be installed from jessie-backports
 because current sbuild of jessie does not work with gnupg2 of Buster
 (Bug [#827315](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=827315))
 ```sh
@@ -30,6 +30,8 @@ then you can use it to run cross-build:
 ```sh
 $ schroot -l | grep sbuild
 chroot:buster-amd64-sbuild
+
+## You can try running sbuild with command
 $ sbuild --host=armhf -d buster-amd64-sbuild <package>.dsc
 ```
 Update command sbuild in [sbuild-loop.sh](./sbuild-loop.sh) with your chroot.
