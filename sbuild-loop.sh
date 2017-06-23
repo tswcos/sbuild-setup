@@ -22,6 +22,9 @@
 
 trap "exit" INT
 
+JOBS=16
+SCHROOT="buster-amd64-sbuild"
+
 build_profile="${PWD}/build-profile"
 sbuild_status="${PWD}/sbuild-status"
 repo_logfile="${PWD}/repo/logs/logfile"
@@ -35,16 +38,24 @@ for pkg in $last_update_pkgs; do
 	if [ "$dir" = "" ]; then continue; fi
 	cd $dir
 
-	ver=`cat $pkg_*.dsc | grep "^Version:"|head -1|cut -d' ' -f2 | sed -e "s/.*://"`
+	# Get the latest version of *.dsc
+	dsc_file=$(find -name "${pkg}_*.dsc" | tail -1)
+	ver=`cat $dsc_file | grep "^Version:" | head -1 | cut -d' ' -f2 | sed -e "s/.*://"`
+
+	# Get build profile option
 	profile=`grep "^$pkg " $build_profile | cut -d' ' -f2`
 	profile_option=""
 	if [ "$profile" != "" ]; then
 		profile_option="--profiles=$profile"
 	fi
 
+	# Clean old files from the previous build
 	rm -rf *.build *.buildinfo *.udeb *.deb *.changes
-	sbuild --jobs=16 ${profile_option} --host=armhf -d buster-amd64-sbuild $pkg_*.dsc
 
+	# Build
+	sbuild --jobs=$JOBS ${profile_option} --host=armhf -d $SCHROOT $dsc_file
+
+	# Summary result to file sbuild-status
 	buildlog=${pkg}_${ver}_armhf.build
 	output="$pkg $ver $(grep "^Status:" $buildlog | cut -d' ' -f2) $(grep "Finished at" $buildlog|tail -1|sed -e "s/Finished at //")"
 
