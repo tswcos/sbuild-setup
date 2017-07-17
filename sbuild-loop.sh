@@ -26,6 +26,7 @@ JOBS=16
 SCHROOT="buster-amd64-sbuild"
 
 build_profile="${PWD}/build-profile"
+disable_parallel_list="${PWD}/disable-parallel"
 sbuild_status="${PWD}/sbuild-status"
 repo_logfile="${PWD}/repo/logs/logfile"
 repo_last_update_date=$(awk '{print $1}' $repo_logfile | tail -1)
@@ -49,11 +50,18 @@ for pkg in $last_update_pkgs; do
 		profile_option="--profiles=$profile"
 	fi
 
+	# Get parallel option
+	if grep "^\s*$pkg\s*$" $disable_parallel_list; then
+		job_option=""
+	else
+		job_option="--jobs=$JOBS"
+	fi
+
 	# Clean old files from the previous build
 	rm -rf *.build *.buildinfo *.udeb *.deb *.changes
 
 	# Build
-	sbuild --jobs=$JOBS ${profile_option} --host=armhf -d $SCHROOT $dsc_file
+	sbuild $job_option $profile_option --host=armhf -d $SCHROOT $dsc_file
 
 	# Summary result to file sbuild-status
 	buildlog=${pkg}_${ver}_armhf.build
