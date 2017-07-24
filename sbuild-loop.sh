@@ -41,6 +41,8 @@ for pkg in $last_update_pkgs; do
 
 	# Get the latest version of *.dsc
 	dsc_file=$(find -name "${pkg}_*.dsc" | tail -1)
+	if [ "$dsc_file" = "" ]; then cd -; continue; fi
+
 	ver=`cat $dsc_file | grep "^Version:" | head -1 | cut -d' ' -f2 | sed -e "s/.*://"`
 
 	# Get build profile option
