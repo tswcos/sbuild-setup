@@ -22,7 +22,12 @@
 
 trap "exit" INT
 
-JOBS=16
+JOBS=8
+# Get the number of cpus
+if [ -d /sys/devices/system/cpu ]; then
+	JOBS=$(ls -d /sys/devices/system/cpu/cpu[[:digit:]]* | wc -w)
+fi
+
 SCHROOT="buster-amd64-sbuild"
 
 build_profile="${PWD}/build-profile"
