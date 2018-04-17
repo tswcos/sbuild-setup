@@ -58,8 +58,7 @@ Set cron job to fetch source code and run sbuild weekly.
 [sbuild-loop.sh](./sbuild-loop.sh) only builds newest packages (base on *repo/logs/logfile*)
 ```sh
 $ crontab -e
-0 0 * * 6 cd <this dir> && reprepro -b ./repo update buster-cross
-0 2 * * 6 cd <this dir> && ./sbuild-loop.sh
+0 0 * * 6 cd <this dir> && reprepro -b ./repo update buster-cross && ./sbuild-loop.sh
 ```
 
 # References
