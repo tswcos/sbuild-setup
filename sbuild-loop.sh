@@ -28,7 +28,7 @@ if [ -d /sys/devices/system/cpu ]; then
 	JOBS=$(ls -d /sys/devices/system/cpu/cpu[[:digit:]]* | wc -w)
 fi
 
-SCHROOT="buster-amd64-sbuild"
+SCHROOT="unstable-amd64-sbuild"
 
 build_profile="${PWD}/build-profile"
 disable_parallel_list="${PWD}/disable-parallel"

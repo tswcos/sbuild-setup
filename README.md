@@ -19,8 +19,7 @@ $ sudo sbuild-adduser $LOGNAME
 
 ### Create sbuild chroot
 ```sh
-$ test -f /usr/share/debootstrap/scripts/buster || sudo ln -s sid /usr/share/debootstrap/scripts/buster
-$ sudo sbuild-createchroot --include=debhelper buster ./chroot-sbuild http://ftp.debian.org/debian
+$ sudo sbuild-createchroot --include=debhelper unstable ./chroot-sbuild http://ftp.debian.org/debian
 ```
 You should change the URL to your Debian fastest mirror.
 
@@ -29,10 +28,10 @@ Check name of chroot which has just been created,
 then you can use it to run cross-build:
 ```sh
 $ schroot -l | grep sbuild
-chroot:buster-amd64-sbuild
+chroot:unstable-amd64-sbuild
 
 ## You can try running sbuild with command
-$ sbuild --host=armhf -d buster-amd64-sbuild <package>.dsc
+$ sbuild --host=armhf -d unstable-amd64-sbuild <package>.dsc
 ```
 Update command sbuild in [sbuild-loop.sh](./sbuild-loop.sh) with your chroot.
 # Setup reprepro
@@ -45,10 +44,10 @@ You should change the URL in *./repo/conf/updates* to your Debian fastest mirror
 It will save time on fetching.
 
 In [repo/conf/distributions](./repo/conf/distributions),
-local repo is defined with codename *buster-cross*.
+local repo is defined with codename *unstable-cross*.
 You can update source for local repo with command:
 ```sh
-$ reprepro -b ./repo update buster-cross
+$ reprepro -b ./repo update unstable-cross
 ```
 
 Packages, which we want to fetch, are listed in [repo/conf/filters/pkglist](./repo/conf/filters/pkglist)
@@ -58,7 +57,7 @@ Set cron job to fetch source code and run sbuild weekly.
 [sbuild-loop.sh](./sbuild-loop.sh) only builds newest packages (base on *repo/logs/logfile*)
 ```sh
 $ crontab -e
-0 0 * * 6 cd <this dir> && reprepro -b ./repo update buster-cross && ./sbuild-loop.sh
+0 0 * * 6 cd <this dir> && reprepro -b ./repo update unstable-cross && ./sbuild-loop.sh
 ```
 
 # References

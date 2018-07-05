@@ -1,6 +1,6 @@
-Name: buster-upstream
+Name: unstable-upstream
 Method: http://ftp.debian.org/debian
-Suite: buster
+Suite: unstable
 Components: main
 VerifyRelease: blindtrust
 Architectures: source

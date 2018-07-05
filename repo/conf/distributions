@@ -1,11 +1,11 @@
-Codename: buster-cross
+Codename: unstable-cross
 Label: Debian Buster source packages
-Version: 10.00
+Version: 11.00
 Architectures: source
 Components: main contrib non-free
 Description: Local Buster repo for cross-build
 DebIndices: Packages Release . .gz .bz2 .xz
 DscIndices: Sources Release .gz .bz2 .xz
 Tracking: all includechanges
-Update: buster-upstream
+Update: unstable-upstream
 Log: logfile
