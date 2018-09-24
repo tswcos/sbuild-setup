@@ -1142,6 +1142,7 @@ lcab install
 lcms2 install
 ldapvi install
 leafpad install
+leaktracer install
 leptonlib install
 less install
 leveldb install
@@ -1878,6 +1879,7 @@ obconf install
 obex-data-server install
 obexpushd install
 oce install
+ocfs2-tools install
 ocp install
 ocrad install
 ode install
