@@ -1,8 +1,1 @@
-autogen cross
-bash nocheck
-guile-2.0 cross
-liblocale-gettext-perl cross
-make-dfsg nocheck
-nss cross
-systemd nocheck
-vpnc cross
+
