@@ -1,0 +1,8 @@
+export uid=1000
+if [ "$UID" != "0" ]; then
+	export uid=$UID
+fi
+
+export DOCKERIMAGE=sbuild-image
+export DOCKERCONTAINER=sbuild
+export PARRENT_DIR=${DOCKER_DIR}/..
