@@ -1,3 +1,5 @@
+_NOTE: You can setup build system quickly with docker by running scripts in [./scripts](./scripts), or you can follow the below steps for manual setup on your machine._
+
 # Setup sbuild
 ### Install sbuild
 On Debian Jessie, sbuild needs be installed from jessie-backports
