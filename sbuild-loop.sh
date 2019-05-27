@@ -70,6 +70,11 @@ for pkg in $last_update_pkgs; do
 	# Build
 	sbuild $job_option $profile_option --host=armhf -d $SCHROOT $dsc_file
 
+	# Currently, we're getting error that libgvc6:armhf cannot be remove.
+	# This makes other packages fail to build.
+	schroot -c chroot:unstable-amd64-sbuild -d / -u root -- apt-get remove -y libgvc6:armhf libgvc6-plugins-gtk:armhf
+	schroot -c chroot:unstable-amd64-sbuild -d / -u root -- apt-get autoremove -y
+
 	# Summary result to file sbuild-result
 	buildlog=${pkg}_${ver}_armhf.build
 	output="$pkg $ver $(grep "^Status:" $buildlog | cut -d' ' -f2) $(grep "Finished at" $buildlog|tail -1|sed -e "s/Finished at //")"
