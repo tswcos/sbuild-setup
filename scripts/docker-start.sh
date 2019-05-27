@@ -24,5 +24,5 @@ $E "sudo -E sbuild-createchroot --include=eatmydata,ccache,gnupg \
 	/home/build/chroot-sbuild \
 	http://deb.debian.org/debian"
 
-$E "echo Acquire::http::proxy \\"$http_proxy\\"\; | sudo tee /home/build/chroot-sbuild/etc/apt/apt.conf.d/99proxy" 
-$E "echo \"command-prefix=/var/cache/ccache-sbuild/sbuild-setup,eatmydata\" | sudo tee -a /etc/schroot/chroot.d/unstable-amd64-sbuild-\*"
+$E "echo Acquire::http::proxy \\\"$http_proxy\\\"\; | sudo tee /home/build/chroot-sbuild/etc/apt/apt.conf.d/99proxy"
+$E "echo \"command-prefix=/var/cache/ccache-sbuild/sbuild-setup,eatmydata\" | sudo tee -a /etc/schroot/chroot.d/unstable-amd64-sbuild-*"
