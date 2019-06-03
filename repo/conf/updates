@@ -1,7 +1,7 @@
 Name: unstable-upstream
-Method: http://ftp.debian.org/debian
+Method: http://deb.debian.org/debian
 Suite: unstable
-Components: main
+Components: main contrib non-free
 VerifyRelease: blindtrust
 Architectures: source
 FilterSrcList: deinstall filters/pkglist
