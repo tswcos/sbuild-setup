@@ -8,5 +8,5 @@ docker build \
 	--build-arg https_proxy="$https_proxy" \
 	--build-arg no_proxy="$no_proxy" \
 	--build-arg UID="$uid" \
-	-t $DOCKERIMAGE .
+	-t $DOCKERIMAGE $DOCKER_DIR
 
