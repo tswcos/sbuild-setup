@@ -44,6 +44,7 @@ agg install
 aggregate install
 aglfn install
 aha install
+aide install
 aiksaurus install
 airspy-host install
 airstrike install
@@ -162,6 +163,7 @@ asciidoc install
 ascii install
 asclock install
 asm install
+asn1crypto install
 aspectj install
 aspell-en install
 aspell-fr install
@@ -203,6 +205,7 @@ augeas install
 aumix install
 authbind install
 autoclass install
+autoconf-archive install
 autoconf install
 autocutsel install
 autofs install
@@ -783,6 +786,7 @@ dtach install
 duff install
 dump install
 dunst install
+duplicity install
 dutch install
 dvbcut install
 dvbsnoop install
@@ -1300,6 +1304,7 @@ gnome-common install
 gnome-contacts install
 gnome-control-center install
 gnome-desktop3 install
+gnome-desktop-testing install
 gnome-dictionary install
 gnome-disk-utility install
 gnome-documents install
@@ -1467,6 +1472,7 @@ gtk+3.0 install
 gtkatlantic install
 gtkboard install
 gtk-chtheme install
+gtk-doc install
 gtkgl2 install
 gtkglext install
 gtk-gnutella install
@@ -2372,6 +2378,7 @@ liblangtag install
 liblastfm install
 liblayout install
 liblinear install
+liblinux-usermod-perl install
 liblist-allutils-perl install
 liblist-compare-perl install
 liblist-moreutils-perl install
@@ -2561,6 +2568,8 @@ libpodofo install
 libpod-readme-perl install
 libposix-strptime-perl install
 libppd install
+libpreludedb install
+libprelude install
 libpri install
 libprintsys install
 libproc-processtable-perl install
@@ -2650,6 +2659,7 @@ libsocket-perl install
 libsodium install
 libsoftware-license-perl install
 libsoil install
+libsolv install
 libsort-key-perl install
 libsort-naturally-perl install
 libsort-versions-perl install
@@ -3063,6 +3073,7 @@ mercurial install
 meritous install
 mesa-demos install
 mesa install
+meson install
 metacam install
 metacity install
 meta-gnome3 install
@@ -3307,6 +3318,7 @@ ngrep install
 ng-utils install
 nicstat install
 nilfs-tools install
+ninja-build install
 ninvaders install
 nitrogen install
 njam install
@@ -3340,6 +3352,7 @@ nted install
 ntfs-3g install
 ntl install
 ntp install
+ntpsec install
 ntpstat install
 ntrack install
 nullidentd install
@@ -3477,6 +3490,8 @@ pacman install
 palapeli install
 pal install
 pam install
+pam-pkcs11 install
+pam-shield install
 pam-tmpdir install
 pandas install
 pandoc install
@@ -3666,6 +3681,7 @@ powerstat install
 powertop install
 ppl install
 ppp install
+pps-tools install
 pptp-linux install
 pqiv install
 praat install
@@ -3674,6 +3690,7 @@ prboom-plus install
 predict install
 prelink install
 preload install
+prelude-manager install
 prerex install
 presage install
 primer3 install
@@ -3699,6 +3716,7 @@ prototypejs install
 proxychains install
 ps2eps install
 psad install
+pseudo install
 psignifit install
 psi install
 psmisc install
@@ -3756,6 +3774,7 @@ pysycache install
 pytables install
 pytest install
 python2.7 install
+python3.7 install
 python3-defaults install
 python3-stdlib-extensions install
 python-acme install
@@ -3767,6 +3786,7 @@ python-augeas install
 python-babel install
 python-backports-abc install
 python-backports-shutil-get-terminal-size install
+python-bcrypt install
 python-certbot-apache install
 python-certbot install
 python-cffi install
@@ -3786,6 +3806,7 @@ python-decorator install
 python-defaults install
 python-django install
 python-docutils install
+python-fasteners install
 python-funcsigs install
 python-functools32 install
 python-future install
@@ -3803,8 +3824,10 @@ python-magic install
 python-markdown install
 python-mechanize install
 python-mock install
+python-monotonic install
 python-msgpack install
 python-mysqldb install
+python-nacl install
 python-netaddr install
 python-networkx install
 python-notify2 install
@@ -4495,6 +4518,9 @@ tor install
 torsocks install
 totem install
 totem-pl-parser install
+tpm2-abrmd install
+tpm2-tools install
+tpm2-tss install
 tpm-tools install
 trace-cmd install
 traceroute install
