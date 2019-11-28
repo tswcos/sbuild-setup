@@ -41,3 +41,6 @@ RUN bash -c 'if test -n "$https_proxy"; then git config --global https.proxy "$h
 RUN bash -c 'if test -n "$no_proxy"; then git config --global core.noproxy "$no_proxy"; fi'
 
 RUN mkdir -p /home/$USER/sbuild-setup
+RUN sudo -E sbuild-createchroot --include=eatmydata,ccache,gnupg unstable /home/$USER/chroot-sbuild http://deb.debian.org/debian
+RUN bash -c 'if test -n "$http_proxy"; then echo "Acquire::http::proxy \"$http_proxy\";" | sudo tee /home/$USER/chroot-sbuild/etc/apt/apt.conf.d/99proxy; fi'
+RUN echo "command-prefix=/var/cache/ccache-sbuild/sbuild-setup,eatmydata" | sudo tee -a /etc/schroot/chroot.d/unstable-amd64-sbuild-*

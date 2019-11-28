@@ -16,13 +16,3 @@ docker run --env http_proxy=$http_proxy \
 	-d \
 	--name $DOCKERCONTAINER \
 	$DOCKERIMAGE
-
-E="docker exec -u $uid $DOCKERCONTAINER /bin/bash -c"
-
-$E "sudo -E sbuild-createchroot --include=eatmydata,ccache,gnupg \
-	unstable \
-	/home/build/chroot-sbuild \
-	http://deb.debian.org/debian"
-
-$E "echo Acquire::http::proxy \\\"$http_proxy\\\"\; | sudo tee /home/build/chroot-sbuild/etc/apt/apt.conf.d/99proxy"
-$E "echo \"command-prefix=/var/cache/ccache-sbuild/sbuild-setup,eatmydata\" | sudo tee -a /etc/schroot/chroot.d/unstable-amd64-sbuild-*"
