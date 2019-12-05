@@ -1,3 +1,5 @@
 acm
 e2fsprogs
 gdbm
+nss
+pciutils
