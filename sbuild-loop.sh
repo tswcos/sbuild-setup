@@ -22,6 +22,10 @@
 
 trap "exit" INT
 
+function schroot_cmd {
+	schroot -c chroot:unstable-amd64-sbuild -d / -u root -- $@
+}
+
 JOBS=8
 # Get the number of cpus
 if [ -d /sys/devices/system/cpu ]; then
@@ -67,13 +71,16 @@ for pkg in $last_update_pkgs; do
 	# Clean old files from the previous build
 	rm -rf *.build *.buildinfo *.udeb *.deb *.changes
 
+	# Currently, we're getting error that libgvc6:armhf cannot be remove.
+	# This makes other packages fail to build. Trick it to be removed by install native package
+	if schroot_cmd "dpkg -s libgvc6:armhf" 2> /dev/null | grep -q "Status:.*install"; then
+		schroot_cmd "apt-get install -y libgvc6 libgvc6-plugins-gtk"
+		schroot_cmd "apt-get remove -y libgvc6 libgvc6-plugins-gtk"
+		schroot_cmd "apt-get autoremove -y"
+	fi
+
 	# Build
 	sbuild $job_option $profile_option --host=armhf -d $SCHROOT $dsc_file
-
-	# Currently, we're getting error that libgvc6:armhf cannot be remove.
-	# This makes other packages fail to build.
-	schroot -c chroot:unstable-amd64-sbuild -d / -u root -- apt-get remove -y libgvc6:armhf libgvc6-plugins-gtk:armhf
-	schroot -c chroot:unstable-amd64-sbuild -d / -u root -- apt-get autoremove -y
 
 	# Summary result to file sbuild-result
 	buildlog=${pkg}_${ver}_armhf.build
